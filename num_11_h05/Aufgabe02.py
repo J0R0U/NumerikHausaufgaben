@@ -11,7 +11,7 @@ def create_a_b_exercise_a(n):
 
 def exercise_a():
     for n in [40, 50, 60]:
-        print(n, ":")
+        print(f'n = {n}:')
         
         A, b = create_a_b_exercise_a(n)
         LU, p = zerlegung(A, greatest_non_zero)
@@ -29,7 +29,7 @@ def create_a_b_exercise_b(n):
 
 def exercise_b():
     for n in range(10, 16):
-        print(n, ":")
+        print(f'n = {n}:')
         
         A, b = create_a_b_exercise_b(n)
         LU, p = zerlegung(A, greatest_non_zero)

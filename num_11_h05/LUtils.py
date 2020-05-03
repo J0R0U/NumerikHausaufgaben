@@ -20,6 +20,7 @@ def greatest_non_zero(A, p, k, n, curr):
     p[curr] = max_index
 
 def zerlegung(A, swap_function):
+    A = A.copy()
     n = len(A)
     p = []
     for k in range(1, n):
