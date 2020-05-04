@@ -37,6 +37,7 @@ def zerlegung(A, swap_function):
     return A, p
 
 def permutation(p, x):
+    x = x.copy()
     for index, perm in enumerate(p):
         x[index], x[perm] = x[perm], x[index]
     return x
@@ -53,17 +54,16 @@ def rueckwaerts(LU, b):
         res[y] = (b[y] - sum([ LU[y,x] * res[x] for x in range(y+1, len(LU))])) / LU[y,y]
     return res
 
-def nachiteration(A, b, LU, p, x):
-    x_k = x
+def nachiteration(A, b, LU, p, x, n):
+    x = x.copy()
     
-    for i in range(10):
-        r_k = np.subtract(b, np.dot(A, x_k))
+    for i in range(n):
+        r_k = np.subtract(b, np.dot(A, x))
         
         r_k_p = permutation(p, r_k)
         y = vorwaerts(LU, r_k_p)
         p_k = rueckwaerts(LU, y)
         
-        tmp = np.add(x_k, p_k);
-        x_k = tmp
+        x = np.add(x, p_k);
     
-    return np.add(x, p_k)
+    return x
