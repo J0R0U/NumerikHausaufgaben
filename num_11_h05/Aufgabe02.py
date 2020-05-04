@@ -2,6 +2,8 @@
 
 import numpy as np
 from LUtils import greatest_non_zero, zerlegung, permutation, vorwaerts, rueckwaerts, nachiteration
+
+nachiterationen = 100
     
 def create_a_b_exercise_a(n):
     A = np.array([np.array([1 if i == j or j == n - 1 else -1 if j < i else 0 for j in range(n)]) for i in range(n)], dtype=float)
@@ -19,7 +21,7 @@ def exercise_a():
         y = vorwaerts(LU, x)
         z = rueckwaerts(LU, y)
         
-        print(nachiteration(A, b, LU, p, z))
+        print(nachiteration(A, b, LU, p, z, nachiterationen))
         
   
 def create_a_b_exercise_b(n):
@@ -37,7 +39,7 @@ def exercise_b():
         y = vorwaerts(LU, x)
         z = rueckwaerts(LU, y)
         
-        print(nachiteration(A, b, LU, p, z))
+        print(nachiteration(A, b, LU, p, z, nachiterationen))
 
 exercise_a()
 exercise_b()
